@@ -11,15 +11,35 @@ import 'hello_page3.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Hello Flutter'),
-          centerTitle: true,
-      
-        ),
-        body: _body( context),
-        floatingActionButton: _floatingActionButton(),
-        drawer: MeuDrawer(),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text('Hello Flutter'),
+            centerTitle: true,
+            bottom: TabBar(
+              tabs: [
+                Tab( text: "TAB1"),
+                Tab( text: "TAB2"),
+                Tab( text: "TAB3"),
+              ]
+            ),
+        
+          ),
+          body: TabBarView(
+            children: [
+              _body(context),
+              Container(
+                color: Colors.red,
+              ), 
+              Container(
+                color: Colors.yellow,
+              )
+            ],
+           ),
+          floatingActionButton: _floatingActionButton(),
+          drawer: MeuDrawer(),
+      ),
     );
   }
 
